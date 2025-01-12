@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  <section class="comments-section">
+    <p class="message">Comments for {{ resource.title }}</p>
+    <section class="content" style="width: 90%; margin: 1rem auto;">
+      <section class="user">
+        <img src="{{ url_for('static', filename='images/' ~ resource.user.image_file) }}" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+        <section class="info">
+          <p>
+            <strong><a href="{{ url_for('view_profile', user_id=resource.user_id) }}" class="res-username">{{ resource.user.username }}</a></strong>
+            <span style="font-size: 1.1rem; font-weight: bolder;">-</span> {{ moment(resource.date_posted).fromNow(refresh=True) }}
+          </p>
+          <p class="description">{{ resource.description }}</p>
+        </section>
+      </section>
+      <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
+      <p class="title">{{ resource.title }}</p>
+    </section>
+
+    <form method="POST" class="comment-space">
+      <input type="text" class="comment" name="review" placeholder="Add your comment here...">
+      <button type="submit" class="comment-button">Comment</button>
+    </form>
+
+    <section class="reviews" style="width: 90%; margin: .5rem auto;">
+      {% for review in reviews %}
+        <section class="review" style="margin-top: 1rem;">
+          <section class="user">
+            <img src="{{ url_for('static', filename='images/' ~ review.user.image_file) }}" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+              <section class="info">
+                <p>
+                  <strong><a href="{{ url_for('view_profile', user_id=review.user.id) }}" class="res-username">{{ review.user.username }}</a></strong> - {{ moment(review.review_date).fromNow() }}</p>
+                  <p style="margin-top: -1rem;">{{ review.review }}</p>
+              </section>
+          </section>
+          <button style="font-size: 1.2rem; color: rgb(14, 14, 141); margin-top: -1.7rem; margin-left: 3rem; border: none; background: transparent; margin-bottom: 1rem;" id="replies" class="replies">replies</button>
+          <section class="reply-section">
+            {% for reply in review.replies %}
+            <section class="reply" style="margin-left: 2rem;">
+              <section class="user">
+                <img src="{{ url_for('static', filename='images/' ~ reply.user.image_file) }}" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+                <section class="info">
+                  <p>
+                    <strong><a href="{{ url_for('view_profile', user_id=reply.user.id) }}" class="res-username">{{ reply.user.username }}</a></strong> - {{ moment(reply.reply_date).fromNow() }}
+                  </p>
+                  <p style="margin-top: -1rem;">{{ reply.reply }}</p>
+                </section>
+              </section>
+            </section>
+            {% endfor %}
+              <form method="POST" action="{{ url_for('add_reply', review_id=review.id) }}" class="comment-space" style="margin-left: 1.7rem; margin-bottom: 1rem;">
+                <input type="text" name="reply" placeholder="Add your reply here..."  class="comment">
+                <button type="submit"  class="comment-button">Reply</button>
+              </form>
+          </section>
+          <button style="font-size: 1.2rem; color: rgb(14, 14, 141); margin-top: -.5rem; margin-left: 2rem; border: none; background: transparent; display: none;" id="close-replies" class="close-replies">close</button>
+      </section>
+      {% endfor %}
+    </section>
+  </section>
+{% endblock %}

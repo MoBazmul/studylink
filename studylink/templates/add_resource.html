@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  <section class="add-resource">
+    <form method="POST" style="margin: 2rem auto;">
+      {{ form.hidden_tag() }}
+      <p style="margin: 2rem 1rem; font-size: 18px; font-style: oblique;">
+        Resource added will be visible to your peers sharing the same courses you chose
+      </p>
+
+      <section class="form-group">
+        {{ form.link.label(class="label") }}
+        {% if form.link.errors %}
+          {{ form.link(class="form-control form-control-lg is-invalid") }}
+          <section class="form-group">
+            {% for error in form.link.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+        {% else %}
+          {{ form.link(class="input") }}
+        {% endif %}
+      </section>
+
+      <section class="form-group">
+        {{ form.comment.label(class="label") }}
+        {% if form.comment.errors %}
+          {{ form.comment(class="form-control form-control-lg is-invalid") }}
+          <section class="form-group">
+            {% for error in form.comment.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+        {% else %}
+          {{ form.comment(class="input") }}
+        {% endif %}
+      </section>
+
+      <section class="form-group">
+        {{ form.submit(class="button", style="margin-top: -2rem;") }}
+      </section>
+    </form>
+  </section>
+{% endblock %}

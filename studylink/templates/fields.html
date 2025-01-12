@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="field-pick">
+    <p class="message">Identify your field of interest to access specialized resources</p>
+
+    <form action="{{ url_for('courses') }}" method="POST">
+      <section class="form-group">
+        {% for field in fields %}
+          <input type="checkbox" id="field{{ field.id }}" name="field" value="{{ field.id }}" style="margin-left: .2rem; width: 15px; height: 15px;">
+          <label for="field{{ field.id }}">{{ field.field_name }}</label><br>
+        {% endfor %}
+        <button type="submit" class="button" style="width: 95%; margin: 1rem .5rem;">Show Courses</button>
+      </section>
+    </form>
+  </section>
+{% endblock %}

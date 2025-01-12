@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="field-pick">
+    <h1 class="message">Edit Fields</h1>
+    <form action="{{ url_for('edit') }}" method="POST">
+      <section class="form-group">
+        {% for field in fields %}
+          <input type="checkbox" id="field{{ field.id }}" name="field" value="{{ field.id }}" style="margin-left: .2rem; width: 15px; height: 15px;">
+          <label for="field{{ field.id }}">{{ field.field_name }}</label><br>
+        {% endfor %}
+        <button type="submit" class="button" style="width: 95%; margin: 1rem 2rem;">Next</button>
+      </section>
+    </form>
+  </section>
+{% endblock %}
+

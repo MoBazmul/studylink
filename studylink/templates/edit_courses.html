@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="field-pick">
+    <h1 style="font-size: 1.4rem; margin: 1rem .5rem;">Edit Courses for {{ field.field_name }}</h1>
+    <form action="{{ url_for('edit_courses') }}" method="post">
+      <section class="form-group">
+        <ul style="list-style: none; margin-left: -1.5rem;">
+          {% for course in courses %}
+            <li style="margin-bottom: 5px;">
+              <input type="checkbox" id="course{{ course.id }}" name="courses" value="{{ course.id }}" style="margin-left: .2rem; width: 15px; height: 15px;">
+              <label for="course{{ course.id }}">{{ course.course_name }}</label>
+            </li>
+          {% endfor %}
+        </ul>
+        <button type="submit" class="button" style="width: 95%; margin: .4rem;">Save Choices</button>
+      </section>
+    </form>
+    <a href="{{ url_for('account') }}" style="font-size: 1.2rem; margin-left: 1rem; margin-top: -.5rem; color: darkblue; margin-bottom: 1rem;">Back to Profile</a>
+  </section>
+{% endblock %}
+

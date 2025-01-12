@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  <section class="form-border" id="login">
+    <form action="" method="POST">
+      {{ form.hidden_tag() }}
+
+      <section class="form-group">
+        {{ form.email.label(class="label") }}
+
+        {% if form.email.errors %}
+        {{ form.email(class="form-control form-control-lg is-invalid") }}
+
+        <section class="form-group">
+          {% for error in form.email.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </section>
+        {% else %}
+          {{ form.email(class="input") }}
+        {% endif %}
+      </section>
+
+      <section class="form-group">
+        {{ form.password.label(class="label") }}
+
+        {% if form.password.errors %}
+        {{ form.password(class="form-control form-control-lg is-invalid") }}
+
+        <section class="form-group">
+          {% for error in form.password.errors %}
+            <span>{{ error }}</span>
+          {% endfor %}
+        </section>
+        {% else %}
+          {{ form.password(class="input") }}
+        {% endif %}
+      </section>
+
+      <section class="form-check">
+        {{ form.remember(class="checkbox") }}
+        {{ form.remember.label(class="remember") }}
+      </section>
+
+      <section class="form-group">
+        {{ form.submit(class="button") }}
+      </section>
+    </form>
+  </section>
+
+  <section class="sign_red">
+    <small class="muted-text">
+      Need an Account?  <a class="" href="{{ url_for('register') }}#signup">Sign Up Now</a>
+    </small>
+  </section>
+{% endblock %}
+

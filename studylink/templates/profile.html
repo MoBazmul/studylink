@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="account-content account-tab">
+    <section class="media">
+      <img class="rounded-image" src="{{ image_file }}" alt="Profile Pic" style="margin-bottom: 1.5rem; margin-top: 1.5rem;">
+      <section class="flexed">
+        <p class="account-details"><span class="account-style">Username</span>: {{ user.username }}</p>
+        <p class="account-details"><span class="account-style">Email</span>: {{ user.email }}</p>
+        <p class="account-details"><span class="account-style">Joined</span>: {{ user.joined | format_datetime }}</p>
+        {% if user.website %}
+          <p class="account-details"><span class="account-style">Website</span>:
+            <a href="{{ user.website }}" target="_blank" style="color: #30106f;">Visit my website</a>
+          </p>
+        {% endif %}
+        {% if user.twitter %}
+          <p class="account-details"><span class="account-style">Twitter</span>:
+            <a href="{{ user.twitter }}" target="_blank" style="color: #30106f;">Check my tweets</a>
+          </p>
+        {% endif %}
+        {% if user.github %}
+          <p class="account-details"><span class="account-style">Github</span>:
+            <a href="{{ user.github }}" target="_blank" style="color: #30106f;">Take a look at my projects</a>
+          </p>
+        {% endif %}
+        <p class="account-details">
+          {% if fields_length > 1 %}
+            <span class="account-style">Fields</span>:
+          {% elif fields_length == 1 %}
+            <span class="account-style">Field</span>:
+          {% endif %}
+          {% for user_field in fields %}
+            {{ user_field }},
+          {% endfor %}
+        </p>
+
+        <p class="account-details">
+          {% if courses_length > 1 %}
+            <span class="account-style">Courses</span>:
+          {% elif courses_length == 1 %}
+            <span class="account-style">Course</span>:
+          {% endif %}
+          {% for user_course in courses %}
+            {{ user_course }},
+          {% endfor %}
+        </p>
+      </section>
+    </section>
+  </section>
+{% endblock %}

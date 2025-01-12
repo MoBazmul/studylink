@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+  <section class="preview">
+    <section class="form-group" style="width: 100%;">
+      <h2 class="preview_head">Resource Preview</h2>
+      <section class="content">
+        <section class="user">
+          <img src="{{ url_for('static', filename='images/' ~ resource.user.image_file) }}" alt="Profile" style="width: 40px; height: 40px; border-radius: 50%;">
+          <section class="info">
+            <p>
+              <a href="#" class="res-username">{{ resource.user.username }}</a>
+              <span style=" font-size: 1.1rem; font-weight: bolder;">-</span> {{ moment(resource.date_posted).fromNow(refresh=True) }}
+            </p>
+            <p class="description">{{ resource.description }}</p>
+          </section>
+        </section>
+        {% if resource.thumbnail %}
+          <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
+        {% endif %}
+        {% if resource.title %}
+          <p class="title">{{ resource.title }}</p>
+        {% endif %}
+        {% if resource.url %}
+          <a href="{{ resource.url }}" target="_blank" class="watch">Open Resource</a>
+        {% endif %}
+        <section class="action-buttons">
+          <i class="fa fa-floppy-o save-resource" aria-hidden="true" style="font-size: 30px;" data-key="{{ user.id }}" data-another-key="{{ resource.id }}"></i>
+          <a href="{{ url_for('resource_comments', resource_id=resource.id) }}">
+            <i class="fa fa-comments-o" aria-hidden="true" style="font-size: 30px;"></i>
+          </a>
+        </section>
+      </section>
+    </section>
+  </section>
+{% endblock %}

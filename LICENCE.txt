@@ -1,0 +1,24 @@
+MIT License with Additional Restrictions
+
+Copyright (c) 2024 MoBazmul
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software with the following restrictions:
+
+1. Commercial Use Restriction: The Software may not be used for commercial purposes without prior written permission from the copyright holder.
+
+2. Distribution Restriction: The Software may not be distributed in modified form without prominently stating changes made and obtaining prior written permission from the copyright holder.
+
+3. Attribution Requirement: Attribution to the original author(s) must be provided in any copies or substantial portions of the Software.
+
+All other terms of the MIT License remain unchanged.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+

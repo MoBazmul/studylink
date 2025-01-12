@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block content %}
+  {% for message in get_flashed_messages() %}
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{ message }}
+  </div>
+  {% endfor %}
+
+  <section class="account-content">
+    <section class="media">
+      <section class="prof">
+        <img class="rounded-image" src="{{ image_file }}" alt="Profile Pic">
+        <button class="edit">
+          <a href="#form-details">Edit</a>
+        </button>
+      </section>
+      <section class="flexed">
+        <p class="account-details"><span class="account-style">Username</span>: {{ current_user.username }}</p>
+        <p class="account-details"><span class="account-style">Email</span>: {{ current_user.email }}</p>
+        <p class="account-details"><span class="account-style">Joined</span>: {{ current_user.joined | format_datetime }}</p>
+        {% if current_user.website %}
+          <p class="account-details"><span class="account-style">Website</span>:
+            <a href="{{ current_user.website }}" target="_blank" style="color: #30106f;">Visit my website</a>
+          </p>
+        {% endif %}
+        {% if current_user.twitter %}
+          <p class="account-details"><span class="account-style">Twitter</span>:
+            <a href="{{ current_user.twitter }}" target="_blank" style="color: #7f0e50;">Check my tweets</a>
+          </p>
+        {% endif %}
+        {% if current_user.github %}
+          <p class="account-details"><span class="account-style">Github</span>:
+            <a href="{{ current_user.github }}" target="_blank" style="color: #7f0e50;">Take a look at my projects</a>
+          </p>
+        {% endif %}
+        <p class="account-details">
+          {% if fields_length > 1 %}
+            <span class="account-style">Fields</span>:
+          {% elif fields_length == 1 %}
+            <span class="account-style">Field</span>:
+          {% endif %}
+          {% for user_field in fields %}
+            {{ user_field }},
+          {% endfor %}
+        </p>
+
+        <p class="account-details">
+          {% if courses_length > 1 %}
+            <span class="account-style">Courses</span>:
+          {% elif courses_length == 1 %}
+            <span class="account-style">Course</span>:
+          {% endif %}
+          {% for user_course in courses %}
+            {{ user_course }},
+          {% endfor %}
+        </p>
+      </section>
+      <section class="buttons">
+        <button class="bt-fields">
+          <a href="{{ url_for('edit') }}" style="text-decoration: none; color: #fff;">Edit Fields and Courses</a>
+        </button>
+        <section class="two-buttons">
+          <button class="delete-btn action">Delete Account</button>
+        </section>
+      </section>
+    </section>
+
+    <section class="confirm-delete">
+      <p style="color: #30106f;"><strong>Are you sure you want to delete your account?</strong></p>
+      <section class="confirm-buttons">
+        <button class="edit cancel" style="background-color: transparent; color: #30106f; border: 2px solid #30106f;"><strong>cancel</strong></button>
+        <button class="delete-btn deleteBtn"><strong>delete</strong></button>
+      </section>
+    </section>
+
+    <form class="form-class" method="POST" action="" enctype="multipart/form-data">
+      {{ form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="legend" id="form-details">Account Info</legend>
+        <section class="form-group">
+          {{ form.username.label(class="label") }}
+
+          {% if form.username.errors %}
+          {{ form.username(class="input is-invalid") }}
+          <section class="invalid-feedback">
+            {% for error in form.username.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+          {% else %}
+            {{ form.username(class="input") }}
+          {% endif %}
+        </section>
+
+        <section class="form-group">
+          {{ form.email.label(class="label") }}
+          
+          {% if form.email.errors %}
+          {{ form.email(class="input is-invalid") }}
+          <section class="invalid-feedback">
+            {% for error in form.email.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+          {% else %}
+            {{ form.email(class="input") }}
+          {% endif %}
+        </section>
+
+        <section class="form-group">
+          {{ form.website.label(class="label") }}
+          
+          {% if form.website.errors %}
+          {{ form.website(class="input is-invalid") }}
+          <section class="invalid-feedback">
+            {% for error in form.website.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+          {% else %}
+            {{ form.website(class="input") }}
+          {% endif %}
+        </section>
+
+        <section class="form-group">
+          {{ form.twitter.label(class="label") }}
+          
+          {% if form.twitter.errors %}
+          {{ form.twitter(class="input is-invalid") }}
+          <section class="invalid-feedback">
+            {% for error in form.twitter.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+          {% else %}
+            {{ form.twitter(class="input") }}
+          {% endif %}
+        </section>
+
+        <section class="form-group">
+          {{ form.github.label(class="label") }}
+          
+          {% if form.github.errors %}
+          {{ form.github(class="input is-invalid") }}
+          <section class="invalid-feedback">
+            {% for error in form.github.errors %}
+              <span>{{ error }}</span>
+            {% endfor %}
+          </section>
+          {% else %}
+            {{ form.github(class="input") }}
+          {% endif %}
+        </section>
+
+        <section class="form-group">
+          {{ form.picture.label() }}<br>
+          {{ form.picture(class="form-control-file") }}
+          {% if form.picture.errors %}
+            {% for error in form.picture.errors %}
+              <span class="text-danger">{{ error }}</span><br>
+            {% endfor %}
+          {% endif %}
+        </section>
+      </fieldset>
+      <section class="form-group">
+        {{ form.submit(class="update") }}
+      </section>
+    </form>
+  </section>
+{% endblock %}
+

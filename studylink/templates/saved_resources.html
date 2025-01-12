@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="preview">
+  <h2 class="preview_head" style="margin-top: 2rem;">My Saved Resources</h2>
+  <section class="form-group flex-resource" style="width: 100%;">
+    {% if user_resources %}
+      <section class="content-box">
+        {% for course_name, resources in user_resources.items() %}
+          <h2 style="margin-top: -2rem; font-size: 1rem; display: block; width: 100%; text-align: center;">{{ course_name }}</h2>
+          <section class="content">
+            {% for resource in resources %}
+              <div class="resource-item" style="margin-bottom: 1.5rem;">
+                <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
+                <p class="title">{{ resource.title }}</p>
+                <a href="{{ resource.url }}" target="_blank" class="watch">Open Resource</a>
+                <section class="action-buttons">
+                  <i class="fa fa-trash-o delete-resource" aria-hidden="true" style="font-size: 30px;" data-key="{{ resource.id }}"></i>
+                  <span>{{ resource.saves_count }}</span>
+                  <a href="{{ url_for('resource_comments', resource_id=resource.id) }}"><i class="fa fa-comments-o" aria-hidden="true" style="font-size: 30px;"></i></a>
+                  <span>{{ resource.comments_count }}</span>
+                </section>
+              </div>
+            {% endfor %}
+          </section>
+        {% endfor %}
+      </section>
+    {% else %}
+      <p style="margin: 1rem auto; color: rgb(172, 19, 19); font-size: 17px;">You haven't saved any resources</p>
+    {% endif %}
+  </section>
+</section>
+{% endblock %}

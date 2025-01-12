@@ -1,0 +1,152 @@
+[
+    {
+    "Programming Languages": [
+        "Python Development",
+        "Java Programming",
+        "C Programming",
+        "C++ Programming",
+        "JavaScript Development",
+        "Swift Programming (iOS Development)",
+        "Kotlin Programming (Android Development)",
+        "Ruby on Rails",
+        "PHP Development",
+        "Rust Programming",
+        "Go (Golang) Development",
+        "R Programming",
+        "Perl Programming",
+        "TypeScript Development"
+        ]
+    },
+    {
+        "Web Development": [
+            "HTML",
+            "CSS3",
+            "JavaScript",
+            "Tailwind",
+            "SASS",
+            "LESS",
+            "Node.js",
+            "Django",
+            "Flask",
+            "React.js",
+            "Angular.js",
+            "Vue.js",
+            "ASP.NET Development",
+            "WebSocket Programming",
+            "WebAssembly"
+        ]
+    },
+    {
+        "Software Engineering and Architecture": [
+            "Software Engineering Principles",
+            "Software Architecture",
+            "Microservices Architecture",
+            "Agile Software Development",
+            "DevOps Engineering",
+            "Continuous Integration/Continuous Deployment (CI/CD)",
+            "Software Testing and Quality Assurance",
+            "Version Control Systems (Git, SVN)",
+            "Requirement Analysis and Specifications"
+        ]
+    },
+    {
+        "Database Management": [
+            "SQL Databases (MySQL, PostgreSQL, Oracle)",
+            "NoSQL Databases (MongoDB, Cassandra, Redis)",
+            "Database Design and Development",
+            "Data Warehousing",
+            "Big Data Technologies (Hadoop, Spark)"
+        ]
+    },
+    {
+        "Cloud Computing and Services": [
+            "Amazon Web Services (AWS)",
+            "Microsoft Azure",
+            "Google Cloud Platform (GCP)",
+            "Cloud Architecture",
+            "Cloud Security",
+            "Serverless Computing",
+            "Kubernetes and Containerization"
+        ]
+    },
+    {
+        "Mobile App Development": [
+            "iOS Development",
+            "Android Development",
+            "Cross-Platform Development (Flutter, React Native)",
+            "Mobile UI/UX Design",
+            "Mobile Game Development"
+        ]
+    },
+    {
+        "Data Science and Machine Learning": [
+            "Data Analysis with Python",
+            "Machine Learning with Python",
+            "Deep Learning (TensorFlow, PyTorch)",
+            "Natural Language Processing (NLP)",
+            "Computer Vision",
+            "Data Visualization (D3.js, Matplotlib)",
+            "Statistical Analysis",
+            "AI and Machine Learning Engineering"
+        ]
+    },
+    {
+        "Cybersecurity": [
+            "Network Security",
+            "Application Security",
+            "Ethical Hacking and Penetration Testing",
+            "Cryptography",
+            "Cybersecurity Operations",
+            "Incident Response and Forensics"
+        ]
+    },
+    {
+        "Game Development": [
+            "Unity Development",
+            "Unreal Engine Development",
+            "Game Design Principles",
+            "2D/3D Game Development",
+            "Game Physics and AI"
+        ]
+    },
+    {
+        "Artificial Intelligence": [
+            "Artificial Intelligence (General)",
+            "Reinforcement Learning",
+            "Robotics Programming",
+            "AI Ethics and Policy"
+        ]
+    },
+    {
+        "Operating Systems and Systems Programming": [
+            "Operating System Concepts",
+            "Linux System Programming",
+            "Windows System Programming",
+            "Embedded Systems Programming"
+        ]
+    },
+    {
+        "Networking and Communication": [
+            "Network Programming",
+            "Socket Programming",
+            "Internet of Things (IoT) Development"
+        ]
+    },
+    {
+        "DevOps and IT Operations": [
+            "Infrastructure as Code (Terraform, Ansible)",
+            "Container-Orchestration (Docker, Kubernetes)",
+            "Monitoring-and-Logging (Prometheus, ELK Stack)",
+            "IT-Automation"
+        ]
+    },
+    {
+        "Miscellaneous": [
+            "Quantum Computing (Software)",
+            "Blockchain Development",
+            "API Development and Management",
+            "Microcontroller Programming",
+            "UI/UX Design for Software"
+        ]
+    }
+]

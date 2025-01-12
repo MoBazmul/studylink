@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <p class="message peer-info">Connect with peers who share the same courses</p>
+  <section class="peers">
+    {% if shared_users %}
+      <ul>
+        {% for user in shared_users %}
+          <li>
+            <section class="user">
+              <img src="{{ url_for('static', filename='images/' ~ user.image_file) }}" alt="{{ user.username }}'s Profile" style="width: 80px; height: 80px; border-radius: 50%;">
+              <section class="info">
+                <p>
+                  <span style="font-weight: bolder; color: #30106f; font-size: 1.2rem;">{{ user.username }}</span><br>
+                  <span style=" font-size: 1.1rem; font-weight: bolder; font-style: italic;">Joined {{ user.joined | format_datetime }}</span>
+                </p>
+                <a href="{{ url_for('view_profile', user_id=user.id) }}" class="res-username" style="margin-top: -1rem; margin-bottom: -3rem;">View Profile</a>
+              </section>
+            </section>
+          </li><br>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p style="text-align: center; font-size: 1.2rem; color: rgb(144, 15, 15);">No other peers share your courses.</p>
+    {% endif %}
+  </section>
+{% endblock %}

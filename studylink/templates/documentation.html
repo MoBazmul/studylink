@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyLink Documentation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        pre {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            background-color: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .toc {
+            margin-bottom: 20px;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .toc li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>StudyLink Documentation</h1>
+
+    <div class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#1-introduction">Introduction</a></li>
+            <li><a href="#2-getting-started">Getting Started</a>
+                <ul>
+                    <li><a href="#21-installation">Installation</a></li>
+                    <li><a href="#22-usage">Usage</a></li>
+                </ul>
+            </li>
+            <li><a href="#3-project-structure">Project Structure</a></li>
+            <li><a href="#4-features">Features</a></li>
+            <li><a href="#5-configuration">Configuration</a></li>
+            <li><a href="#6-dependencies">Dependencies</a></li>
+            <li><a href="#7-contributing">Contributing</a></li>
+            <li><a href="#8-testing">Testing</a></li>
+            <li><a href="#9-deployment">Deployment</a></li>
+            <li><a href="#10-troubleshooting">Troubleshooting</a></li>
+            <li><a href="#11-additional-resources">Additional Resources</a></li>
+            <li><a href="#12-license">License</a></li>
+        </ul>
+    </div>
+
+    <h2 id="1-introduction">1. Introduction</h2>
+    <p>StudyLink is a resource-sharing platform designed for tech students to collaborate, share study materials, connect with peers, and integrate social media and GitHub profiles, fostering a collaborative learning community.</p>
+
+    <h2 id="2-getting-started">2. Getting Started</h2>
+
+    <h3 id="21-installation">2.1 Installation</h3>
+    <pre><code>git clone https://github.com/yourusername/studylink.git
+cd studylink
+pip install -r requirements.txt</code></pre>
+    <p>Create a <code>.env</code> file with environment variables:</p>
+    <pre><code>SECRET_KEY=your_secret_key
+DATABASE_URI=your_database_uri
+YOUTUBE_API_KEY=your_youtube_api_key</code></pre>
+
+    <h3 id="22-usage">2.2 Usage</h3>
+    <pre><code>python app.py</code></pre>
+    <p>Access StudyLink in your web browser at <a href="http://localhost:5000">http://localhost:5000</a>.</p>
+
+    <h2 id="3-project-structure">3. Project Structure</h2>
+    <pre><code>studylink/
+├── app.py
+├── lib/
+├── LICENSE.txt
+├── README.md
+├── requirements.txt
+├── software_fields_courses.json
+├── var/
+└── studylink/
+    ├── static/
+    ├── templates/
+    ├── forms.py
+    ├── models.py
+    ├── routes.py
+    ├── get_youtube_videos.py
+    └── __init__.py</code></pre>
+
+    <h2 id="4-features">4. Features</h2>
+    <ul>
+        <li>User Registration and Authentication</li>
+        <li>Resource Sharing</li>
+        <li>Course Selection</li>
+        <li>Social Media Integration</li>
+        <li>Peer Interaction</li>
+        <li>Review and Commenting</li>
+    </ul>
+
+    <h2 id="5-configuration">5. Configuration</h2>
+    <pre><code>SECRET_KEY=your_secret_key
+DATABASE_URI=your_database_uri
+YOUTUBE_API_KEY=your_youtube_api_key</code></pre>
+
+    <h2 id="6-dependencies">6. Dependencies</h2>
+    <ul>
+        <li>Flask</li>
+        <li>SQLAlchemy</li>
+        <li>Flask-Bcrypt</li>
+        <li>Flask-Login</li>
+        <li>Flask-Migrate</li>
+        <li>python-dotenv</li>
+        <li>Flask-Moment</li>
+        <li>google-api-python-client</li>
+    </ul>
+
+    <h2 id="7-contributing">7. Contributing</h2>
+    <p>Contributions to StudyLink are welcome! Fork the repository, create a new branch, make changes, and submit a pull request.</p>
+
+    <h2 id="8-testing">8. Testing</h2>
+    <pre><code>pytest</code></pre>
+
+    <h2 id="9-deployment">9. Deployment</h2>
+    <p>Deploy StudyLink to a production environment by configuring a database, setting environment variables, and deploying to a web hosting service.</p>
+
+    <h2 id="10-troubleshooting">10. Troubleshooting</h2>
+    <p>For common issues and troubleshooting tips, refer to the troubleshooting section in the README.md or visit our <a href="https://github.com/yourusername/studylink/issues">GitHub Issues</a>.</p>
+
+    <h2 id="11-additional-resources">11. Additional Resources</h2>
+    <ul>
+        <li><a href="https://github.com/yourusername/studylink">StudyLink GitHub repository</a></li>
+        <li><a href="https://flask.palletsprojects.com/">Flask documentation</a></li>
+    </ul>
+
+    <h2 id="12-license">12. License</h2>
+    <p>StudyLink is licensed under the MIT License. See LICENSE.txt for more details.</p>
+
+</body>
+</html>

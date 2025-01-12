@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="preview">
+  {% if not current_user.is_authenticated %}
+    <section class="about" id="about">
+      <h2 class="preview__h2">About</h2>
+      <p>StudyLink is a platform designed for resource sharing among peers, particularly those studying various tech fields. Users can share resources they find effective, discover valuable materials from others, and connect with peers studying the same courses. <span class="more">....read more</span> <span class="hide-p">The app also allows users to follow each other’s social media profiles and web apps like GitHub, fostering a collaborative and supportive learning community.</span></p>
+    </section>
+
+    <section class="features" id="features">
+      <section class="feature">
+        <img src="{{ url_for('static', filename='images/resource.png') }}" alt="resource" width="50px" height="50px">
+        <p>Share and discover high-quality study materials, including articles, tutorials, and videos</p>
+      </section>
+      <section class="feature">
+        <img src="{{ url_for('static', filename='images/peers.png') }}" alt="resource" width="50px" height="50px">
+        <p>Connect with learners studying the same courses for collaboration and support</p>
+      </section>
+      <section class="feature">
+        <img src="{{ url_for('static', filename='images/social-int.png') }}" alt="resource" width="50px" height="50px">
+        <p>Follow peers on social media and GitHub to stay updated and build your network</p>
+      </section>
+      <section class="additional-info" style="width: 100%; background-color: #240c54ef; padding: 1rem; margin-top: 2rem; border-radius: 5px;">
+        <p style="
+          color: #fff;
+          font-size: 1.3rem;
+          text-align: center;
+          padding: 1rem;
+          ">Our intuitive platform makes it simple to find, share, and manage study resources, so you can focus on learning</p>
+        <button style="
+          width: 100%;
+          border: 2px solid #fff;
+          background: transparent;
+          padding: .5rem;
+          border-radius: 7px;
+        ">
+          <a style="color: #fff; font-size: 1.23rem; text-decoration: none; font-weight: bolder;" href="{{ url_for('register') }}#signup">Get Started</a>
+        </button>
+      </section>
+    </section>
+  {% endif %}
+  <section class="form-group" style="width: 100%;" id="resources">
+    {% if not current_user.is_authenticated %}
+      <h2 class="preview_head">Featured Resources</h2>
+    {% else %}
+      <h2 class="preview_head">Added Resources</h2>
+    {% endif %}
+    {% if not current_user.is_authenticated %}
+      <section class="content-box">
+        {% for resource in resources %}
+          <section class="content">
+            <section class="user">
+              <img src="{{ url_for('static', filename='images/' ~ resource.user.image_file) }}" alt="" width="40px" height="40px" style="border-radius: 50%; background-color: #333;">
+              <section class="info">
+                <p>
+                  <strong><a href="{{ url_for('home') }}" class="res-username">{{ resource.user.username }}</a></strong>
+                  <span style="font-size: 1.1rem; font-weight: bolder;">-</span> {{ moment(resource.date_posted).fromNow(refresh=True) }}
+                </p>
+                <p class="description">{{ resource.description }}</p>
+              </section>
+            </section>
+            <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
+            <p class="title">{{ resource.title }}</p>
+            <p class="save-prompt" style="margin-left: .5rem;">Save to Watch</p>
+            <section class="action-buttons">
+              <i class="fa fa-floppy-o save-resource" aria-hidden="true" data-key="{{ resource.user_id }}" data-another-key="{{ resource.id }}"></i>
+              <a href="{{ url_for('resource_comments', resource_id=resource.id) }}"><i class="fa fa-comments-o" aria-hidden="true" data-another-key="{{ resource.id }}"></i></a>
+            </section>
+          </section>
+        {% endfor %}
+        <br><br><br>
+      </section>
+    {% else %}
+      {% for course_name, resources in resources_dict.items() %}
+        <h2 style="font-size: 18px; margin-bottom: 2rem; margin-top: 3rem; text-align: center;">{{ course_name }}</h2>
+        <section class="content-box">
+          {% if resources %}
+            {% for resource in resources %}
+              <section class="content">
+                <section class="user">
+                  <img src="{{ url_for('static', filename='images/' ~ resource.user.image_file) }}" alt="" style="width: 40px; height: 40px; border-radius: 50%; background-color: #333;">
+                  <section class="info">
+                    <p>
+                      <strong><a href="{{ url_for('view_profile', user_id=resource.user_id) }}" class="res-username">{{ resource.user.username }}</a></strong>
+                      <span style="font-size: 1.1rem; font-weight: bolder;">-</span> {{ moment(resource.date_posted).fromNow(refresh=True) }}
+                    </p>
+                    <p class="description">{{ resource.description }}</p>
+                  </section>
+                </section>
+                <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
+                <p class="title">{{ resource.title }}</p>
+                <p style="margin-left: .5rem;">Save to Watch</p>
+                <p class="save-prompt" style="margin-left: .5rem;"><a style="text-decoration: none;" href="{{ url_for('view_resource_info', resource_id=resource.id) }}">View Resource</a></p>
+                <section class="action-buttons">
+                  <i class="fa fa-floppy-o save-resource" aria-hidden="true" style="font-size: 30px;" data-key="{{ resource.user_id }}" data-another-key="{{ resource.id }}"></i>
+                  <a href="{{ url_for('resource_comments', resource_id=resource.id) }}"><i class="fa fa-comments-o" aria-hidden="true" style="font-size: 30px;"></i></a>
+                </section>
+              </section>
+            {% endfor %}
+          {% else %}
+           <p style="margin: 1rem auto; font-size: 1rem; color:
+           rgb(162, 13, 13);">There are no added resources for this course</p>
+          {% endif %}
+        </section>
+      {% endfor %}
+    {% endif %}
+  </section>
+
+  {% if not current_user.is_authenticated %}
+    <section class="contact" style="margin-top: 2rem;">
+      <h2 class="preview_head">Contact Us</h2>
+      <section class="contact-icons">
+        <a href="mailto:mohaarash001@gmail.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+        </a>
+        <a href="https://wa.me/254758861263" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+        <a href="http://x.com/MoBazmul" target="_blank"><img src="{{ url_for('static', filename='images/x-twitter.svg') }}" alt="twitter"></a>
+      </section>
+    </section>
+  {% endif %}
+</section>
+{% endblock %}
