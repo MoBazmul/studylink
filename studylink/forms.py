@@ -23,7 +23,7 @@ def validate_password_strength(form, field):
 
 class RegistrationForm(FlaskForm):
   """ Form for user registration """
-  username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+  username = StringField('Username', validators=[DataRequired(), Length(min=2, max=15)])
   email = StringField('Email', validators=[DataRequired(), Email()])
   password = PasswordField('Password', validators=[DataRequired(), validate_password_strength])
   confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
@@ -52,12 +52,12 @@ class LoginForm(FlaskForm):
 
 class UpdateAccountForm(FlaskForm):
   """ Form for updating user account information """
-  username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
+  username = StringField('Username', validators=[DataRequired(), Length(min=2, max=15)])
   email = StringField('Email', validators=[DataRequired(), Email()])
   website = StringField('Website')
   twitter = StringField('Twitter')
   github = StringField('Github')
-  picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'png'])])
+  picture = FileField('Update Profile Picture', validators=[FileAllowed(['jpg', 'jpeg', 'png'])])
   submit = SubmitField('Update')
 
   def validate_username(self, username):
