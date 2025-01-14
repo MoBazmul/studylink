@@ -47,27 +47,31 @@
     {% endif %}
     {% if not current_user.is_authenticated %}
       <section class="content-box">
-        {% for resource in resources %}
-          <section class="content">
-            <section class="user">
-              <img src="{{ url_for('static', filename='images/' ~ resource.user.image_file) }}" alt="" width="40px" height="40px" style="border-radius: 50%; background-color: #333;">
-              <section class="info">
-                <p>
-                  <strong><a href="{{ url_for('home') }}" class="res-username">{{ resource.user.username }}</a></strong>
-                  <span style="font-size: 1.1rem; font-weight: bolder;">-</span> {{ moment(resource.date_posted).fromNow(refresh=True) }}
-                </p>
-                <p class="description">{{ resource.description }}</p>
+        {% if resources %}
+          {% for resource in resources %}
+            <section class="content">
+              <section class="user">
+                <img src="{{ url_for('static', filename='images/' ~ resource.user.image_file) }}" alt="" width="40px" height="40px" style="border-radius: 50%; background-color: #333;">
+                <section class="info">
+                  <p>
+                    <strong><a href="{{ url_for('home') }}" class="res-username">{{ resource.user.username }}</a></strong>
+                    <span style="font-size: 1.1rem; font-weight: bolder;">-</span> {{ moment(resource.date_posted).fromNow(refresh=True) }}
+                  </p>
+                  <p class="description">{{ resource.description }}</p>
+                </section>
+              </section>
+              <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
+              <p class="title">{{ resource.title }}</p>
+              <p class="save-prompt" style="margin-left: .5rem;">Save to Watch</p>
+              <section class="action-buttons">
+                <i class="fa fa-floppy-o save-resource" aria-hidden="true" data-key="{{ resource.user_id }}" data-another-key="{{ resource.id }}"></i>
+                <a href="{{ url_for('resource_comments', resource_id=resource.id) }}"><i class="fa fa-comments-o" aria-hidden="true" data-another-key="{{ resource.id }}"></i></a>
               </section>
             </section>
-            <img src="{{ resource.thumbnail }}" alt="Resource Img" class="image-extend">
-            <p class="title">{{ resource.title }}</p>
-            <p class="save-prompt" style="margin-left: .5rem;">Save to Watch</p>
-            <section class="action-buttons">
-              <i class="fa fa-floppy-o save-resource" aria-hidden="true" data-key="{{ resource.user_id }}" data-another-key="{{ resource.id }}"></i>
-              <a href="{{ url_for('resource_comments', resource_id=resource.id) }}"><i class="fa fa-comments-o" aria-hidden="true" data-another-key="{{ resource.id }}"></i></a>
-            </section>
-          </section>
-        {% endfor %}
+          {% endfor %}
+        {% else %}
+            <p style="text-align: center; color: #000; margin-top: 2rem; font-size: medium;">No resources on your course has been uploaded</p>
+        {% endif %}
         <br><br><br>
       </section>
     {% else %}
