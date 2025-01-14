@@ -14,7 +14,6 @@ from flask_login import LoginManager
 from flask_migrate import Migrate
 from dotenv import load_dotenv
 from flask_moment import Moment
-from flask_mail import Mail
 
 # Initialize Flask application
 app = Flask(__name__)
@@ -33,7 +32,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'login'
 login_manager.login_message_category = 'info'
 moment = Moment(app)
-mail = Mail(app)
 
 # Import routes from studylink module
 from studylink import routes
