@@ -131,6 +131,8 @@ body {
 .header__head {
   width: 100%;
   height: 80px;
+  position: sticky;
+  top: 0;
   background-color: var(--BG-COLOR);
   border-bottom-left-radius: var(--BD-RADIUS);
   border-bottom-right-radius: var(--BD-RADIUS);
